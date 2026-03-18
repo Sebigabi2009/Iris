@@ -1,0 +1,589 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Iris</title>
+    
+    <!-- Google Fonts & Icons -->
+    <link href="https://googleapis.com" rel="stylesheet">
+    <link rel="stylesheet" href="https://cloudflare.com">
+    
+    <style>
+       :root {
+    --gold: #c5a059;
+    --dark: #121212;
+    --light-bg: #fdf8f5;
+    --white: #ffffff;
+    --transition: all 0.3s ease;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; color: #333; line-height: 1.6; background: var(--white); overflow-x: hidden; }
+html { scroll-behavior: smooth; }
+
+  /* NAVIGATIE RESTAURATA */
+    nav {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 15px 8%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: fixed;
+        width: 100%;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+    }
+.logo { 
+  font-family: 'Playfair Display', serif; 
+  font-size: 2rem; 
+  color: red; /* Am schimbat aici */
+  letter-spacing: 5px; 
+}
+
+    
+    .nav-links { display: flex; list-style: none; }
+    .nav-links li { margin-left: 15px; }
+    .nav-links a { text-decoration: none; color: red; font-weight: 500; font-size: 1.2rem; text-transform: uppercase; transition: var(--transition); }
+    .nav-links a:hover { color: var(--gold); }
+
+/* SECTIUNEA ACASA - REPARATA */
+#acasa {
+    height: 900px;
+    width: 100%;
+    background-color: #121212; /* Daca poza nu merge, fundalul VA FI negru */
+    background-image: linear-gradient(rgba(0, 0, 0, 0.0), rgba(0, 0, 0, 0.0)), 
+                      url('poza2.jpg'); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #ffffff !important;
+}
+
+#acasa h1 { font-family: 'Playfair Display', serif; font-size: 4.5rem; margin-bottom: 130px; color: red; }
+.btn-main { background: var(--gold); color: red; padding: 15px 40px; text-decoration: none; border-radius: 2px; font-weight: 600; transition: var(--transition); border: none; cursor: pointer; }
+
+
+
+
+
+
+
+        /* Centrare și spațiere pentru titlul secțiunii */
+.section-header { 
+    text-align: center;      /* Centrează textul și linia aurie */
+    padding-top: 60px;       /* Distanța de la marginea de sus a secțiunii */
+    margin-bottom: 80px;     /* Distanța până la imaginile/cardurile de servicii */
+    width: 100%;             /* Se asigură că ocupă toată lățimea pentru centrare */
+}
+
+.section-header h2 { 
+    font-family: 'Playfair Display', serif; 
+    font-size: 2.5rem; 
+    color: var(--dark); 
+    margin-bottom: 10px;     /* Spațiu mic între scris și linia aurie */
+}
+
+.section-header .line { 
+    width: 60px; 
+    height: 3px; 
+    background: var(--gold); 
+    margin: 0 auto;          /* Aceasta este cheia centrării liniei aurie */
+}
+       
+
+/* Centrarea grilei de servicii pentru 4 carduri pe orizontală */
+.services-grid { 
+    display: grid; 
+    /* Am scăzut min-width la 250px pentru a forța 4 coloane pe ecrane de laptop */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    gap: 20px; 
+    justify-content: center; 
+    max-width: 1400px; /* Lățime mai mare pentru a cuprinde 4 carduri */
+    margin: 0 auto; 
+    padding: 0 20px;
+}
+
+/* Containerul cardului */
+.service-card { 
+    background: white; 
+    padding: 0 0 30px 0; 
+    text-align: center; 
+    border-radius: 10px; 
+    overflow: hidden; 
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05); 
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+}
+
+/* Imaginea din card - înălțime fixă pentru uniformitate */
+.service-img {
+    width: 100%;
+    height: 140px; 
+    overflow: hidden;
+}
+
+.service-img img {
+    width: 90%;
+    height: 90%;
+    object-fit: cover; 
+    transition: transform 0.5s ease;
+}
+
+.service-card:hover .service-img img {
+    transform: scale(1.1);
+}
+
+/* Textul din interior */
+.service-card h3 {
+    margin: 20px 0 10px 0;
+    padding: 0 15px;
+    font-family: 'Playfair Display', serif;
+}
+
+.service-card p {
+    padding: 0 20px;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+
+
+
+
+
+        /* Galerie */
+        .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 15px; }
+        .gallery-item { position: relative; overflow: hidden; height: 400px; border-radius: 5px; }
+        .gallery-item img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); cursor: pointer; }
+        .gallery-item:hover img { transform: scale(1.1); }
+
+
+
+
+.product-img {
+    width: 100%;
+    height: 200px; /* Înălțimea zonei de imagine */
+    background: #fff; /* Fundal alb curat pentru produse */
+    margin-bottom: 15px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-img img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* "contain" e mai bun pentru produse, ca să se vadă tot flaconul/cutia */
+    transition: var(--transition);
+}
+
+.product-card:hover img {
+    transform: scale(1.05); /* Efect subtil de mărire la hover */
+}
+
+
+
+
+
+        /* Produse */
+        #produse { background: var(--light-bg); }
+        .products-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 30px; }
+        .product-card { background: white; padding: 20px; border-radius: 5px; text-align: center; position: relative; }
+        .product-img { width: 100%; height: 200px; background: #eee; margin-bottom: 15px; display: flex; align-items: center; justify-content: center; }
+        .price { color: var(--gold); font-weight: 700; font-size: 1.2rem; }
+
+        /* Programări */
+        .booking-flex { display: flex; gap: 50px; flex-wrap: wrap; }
+        .booking-info { flex: 1; min-width: 300px; }
+        .booking-form { flex: 1.5; min-width: 300px; background: var(--light-bg); padding: 40px; border-radius: 5px; }
+        .form-group { margin-bottom: 20px; }
+        input, select, textarea { width: 100%; padding: 12px; border: 1px solid #ddd; font-family: inherit; }
+
+        /* Animatii la scroll */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        footer { background: var(--dark); color: #888; padding: 10px 8% 10px; text-align: center; }
+        .social-icons a { color: var(--gold); margin: 0 10px; font-size: 1.5rem; }
+
+        @media (max-width: 368px) {
+            #acasa h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">Salon Iris</div>
+        <ul class="nav-links">
+            <li><a href="#acasa">Acasă</a></li>
+            <li><a href="#servicii">Servicii</a></li>
+            <li><a href="#galerie">Galerie</a></li>
+            <li><a href="#produse">Produse</a></li>
+            <li><a href="#programari">Programări</a></li>
+        </ul>
+    </nav>
+
+    <!-- ACASA -->
+    <section id="acasa">
+        <h1>Arta Frumuseții</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 30px;color: red;">Redescoperă-ți strălucirea în cel mai exclusivist salon din oraș.</p>
+        <a href="#programari" class="btn-main">RESERVĂ ACUM</a>
+    </section>
+
+    <!-- SERVICII -->
+<section id="servicii">
+    <div class="section-header reveal">
+        <h2>Servicii Profesionale</h2>
+        <div class="line"></div>
+    </div>
+
+    <div class="services-grid">
+        <!-- Card 1 -->
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza3.jpg" alt="Hair Styling">
+            </div>
+            <i class="fas fa-cut"></i>
+            <h3>Hair Styling</h3>
+            <p>Tunsori personalizate, colorimetrie avansată și tratamente cu keratină.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza4.jpg" alt="Machiaj Profi">
+            </div>
+            <i class="fas fa-magic"></i>
+            <h3>Machiaj Profi</h3>
+            <p>Machiaj de mireasă, de seară sau de zi folosind produse premium.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza5.jpg" alt="Manichiură">
+            </div>
+            <i class="fas fa-hand-sparkles"></i>
+            <h3>Manichiură</h3>
+            <p>Îngrijire completă, unghii tehnice și design creativ.</p>
+        </div>
+
+        <!-- Card 4 (Adăugat pentru a avea 4 pe orizontală) -->
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza6.jpg" alt="Cosmetică">
+            </div>
+            <i class="fas fa-spa"></i>
+            <h3>Cosmetică</h3>
+            <p>Tratamente faciale profesionale și ritualuri de relaxare.</p>
+        </div>
+
+
+
+
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza3.jpg" alt="Hair Styling">
+            </div>
+            <i class="fas fa-cut"></i>
+            <h3>Hair Styling</h3>
+            <p>Tunsori personalizate, colorimetrie avansată și tratamente cu keratină.</p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza4.jpg" alt="Machiaj Profi">
+            </div>
+            <i class="fas fa-magic"></i>
+            <h3>Machiaj Profi</h3>
+            <p>Machiaj de mireasă, de seară sau de zi folosind produse premium.</p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza5.jpg" alt="Manichiură">
+            </div>
+            <i class="fas fa-hand-sparkles"></i>
+            <h3>Manichiură</h3>
+            <p>Îngrijire completă, unghii tehnice și design creativ.</p>
+        </div>
+
+        <!-- Card 4 (Adăugat pentru a avea 4 pe orizontală) -->
+        <div class="service-card reveal">
+            <div class="service-img">
+                <img src="poza6.jpg" alt="Cosmetică">
+            </div>
+            <i class="fas fa-spa"></i>
+            <h3>Cosmetică</h3>
+            <p>Tratamente faciale profesionale și ritualuri de relaxare.</p>
+        </div>
+
+
+
+
+    </div>
+</section>
+
+
+    <!-- GALERIE -->
+    <section id="galerie">
+        <div class="section-header reveal">
+            <h2>Portofoliu Galerie</h2>
+            <div class="line"></div>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item reveal"><img src="poza6.jpg" alt="Work 1"></div>
+            <div class="gallery-item reveal"><img src="poza5.jpg" alt="Work 2"></div>
+            <div class="gallery-item reveal"><img src="poza4.jpg" alt="Work 3"></div>
+            <div class="gallery-item reveal"><img src="poza3.jpg" alt="Work 4"></div>
+            <div class="gallery-item reveal"><img src="poza6.jpg" alt="Work 1"></div>
+            <div class="gallery-item reveal"><img src="poza5.jpg" alt="Work 2"></div>
+            <div class="gallery-item reveal"><img src="poza4.jpg" alt="Work 3"></div>
+            <div class="gallery-item reveal"><img src="poza3.jpg" alt="Work 4"></div>
+            <div class="gallery-item reveal"><img src="poza6.jpg" alt="Work 1"></div>
+            <div class="gallery-item reveal"><img src="poza5.jpg" alt="Work 2"></div>
+            <div class="gallery-item reveal"><img src="poza4.jpg" alt="Work 3"></div>
+            <div class="gallery-item reveal"><img src="poza3.jpg" alt="Work 4"></div>
+            <div class="gallery-item reveal"><img src="poza6.jpg" alt="Work 1"></div>
+            <div class="gallery-item reveal"><img src="poza5.jpg" alt="Work 2"></div>
+            <div class="gallery-item reveal"><img src="poza4.jpg" alt="Work 3"></div>
+            <div class="gallery-item reveal"><img src="poza3.jpg" alt="Work 4"></div>
+        </div>
+    </section>
+
+    <!-- PRODUSE -->
+    <section id="produse">
+<div class="section-header reveal">
+    <h2>Produse de Îngrijire</h2>
+    <div class="line"></div>
+</div>
+    <div class="products-grid">
+        <div class="product-card reveal">
+        <div class="product-img">
+        <img src="poza8.jpg" alt="Ulei Hidratant">
+    </div>
+        <h4>Ulei Hidratant</h4>
+</div>
+
+        <div class="product-card reveal">
+        <div class="product-img">
+        <img src="poza8.jpg" alt="Ulei Hidratant">
+</div>
+        <h4>Ulei Hidratant</h4>
+</div>
+            
+        <div class="product-card reveal">
+        <div class="product-img">
+        <img src="poza8.jpg" alt="Ulei Hidratant">
+</div>
+        <h4>Ulei Hidratant</h4>
+</div>
+</div>
+    </section>
+
+
+
+
+
+
+    <!-- PROGRAMĂRI -->
+    <section id="programari">
+        <div class="section-header reveal">
+            <h2>Fă o Programare</h2>
+            <div class="line"></div>
+        </div>
+        <div class="booking-flex">
+            <div class="booking-info reveal">
+                <h3>Contact</h3>
+                <p><i class="fas fa-map-marker-alt" style="color:var(--gold)"></i> Strada Exemplu 123, București</p>
+                <p><i class="fas fa-phone" style="color:var(--gold)"></i> +40 7xx xxx xxx</p>
+                <p><i class="fas fa-envelope" style="color:var(--gold)"></i> contact@irissalon.ro</p>
+                <div class="social-icons" style="margin-top: 20px;">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </div>
+            </div>
+            <div class="booking-form reveal">
+                <!-- Formularul modificat pentru WhatsApp -->
+                <form id="whatsappForm">
+                    <div class="form-group">
+                        <input type="text" id="w_name" placeholder="Numele tău" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" id="w_phone" placeholder="Numărul tău de telefon (ex: 0722...)" required>
+                    </div>
+                    <div class="form-group">
+                        <select id="w_service" required>
+                            <option value="">Selectează Serviciul</option>
+                            <option>Hair Styling</option>
+                            <option>Machiaj</option>
+                            <option>Manichiură</option>
+                        </select>
+                    </div>
+                    <div style="display: flex; gap: 10px;">
+                        <div class="form-group" style="flex: 1.5;">
+                            <input type="date" id="w_date" required>
+                        </div>
+                        <div class="form-group" style="flex: 1;">
+                            <select id="w_time" required>
+                                <option value="">Ora</option>
+                                <option>09:00</option><option>10:00</option><option>11:00</option>
+                                <option>12:00</option><option>13:00</option><option>14:00</option>
+                                <option>15:00</option><option>16:00</option><option>17:00</option>
+                                <option>18:00</option>
+                            </select>
+                        </div>
+                    </div>
+                    <textarea id="w_message" placeholder="Mesaj sau mențiuni speciale (opțional)" rows="4"></textarea>
+                    
+                    <!-- Buton stilizat pentru WhatsApp -->
+                    <button type="submit" class="btn-main" style="width: 100%; margin-top: 20px; background-color: #25D366; border: none; color: white; cursor: pointer; padding: 15px; font-weight: bold; border-radius: 5px;">
+                        <i class="fab fa-whatsapp"></i> TRIMITE PE WHATSAPP
+                    </button>
+                </form>
+                
+                <div id="successMsg" style="display:none; color: green; margin-top: 20px; text-align: center; font-weight: 600;">
+                    Se deschide WhatsApp pentru a trimite mesajul...
+                </div>
+            </div>
+        </div>
+    </section>
+
+   
+    <script>
+        // 1. Animatie la Scroll (Reveal on Scroll)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // 2. Logica Trimitere WhatsApp
+        document.getElementById('whatsappForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // === MODIFICĂ AICI NUMĂRUL TĂU DE TELEFON ===
+            const numarulMeu = "40773951294"; // Pune numărul tău cu 40 în față (fără +)
+
+            const nume = document.getElementById('w_name').value;
+            const telefon = document.getElementById('w_phone').value;
+            const serviciu = document.getElementById('w_service').value;
+            const data = document.getElementById('w_date').value;
+            const ora = document.getElementById('w_time').value;
+            const mesaj = document.getElementById('w_message').value;
+
+            const textFinal = 
+                `*Bună ziua! O nouă programare:*%0A` +
+                `--------------------------%0A` +
+                `*Nume:* ${nume}%0A` +
+                `*Serviciu:* ${serviciu}%0A` +
+                `*Data:* ${data}%0A` +
+                `*Ora:* ${ora}%0A` +
+                `*Telefon client:* ${telefon}%0A` +
+                `*Mesaj:* ${mesaj || "Fără mențiuni"}`;
+
+            const url = `https://wa.me{numarulMeu}?text=${textFinal}`;
+
+            // Efect vizual trimitere
+            this.style.opacity = '0.5';
+            document.getElementById('successMsg').style.display = 'block';
+
+            setTimeout(() => {
+                window.open(url, '_blank').focus();
+                this.reset();
+                this.style.opacity = '1';
+                document.getElementById('successMsg').style.display = 'none';
+            }, 1000);
+        });
+
+        // 3. Schimbare fundal Nav la scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (nav) {
+                if (window.scrollY > 100) {
+                    nav.style.background = '#ffffff';
+                    nav.style.padding = '10px 8%';
+                } else {
+                    nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                    nav.style.padding = '15px 8%';
+                }
+            }
+        });
+    </script>
+
+
+
+
+
+
+   
+
+    <footer>
+        <p>&copy; 2026 Iris Beauty Salon. Toate drepturile rezervate.</p>
+    </footer>
+
+    <script>
+        // Animatie la Scroll (Reveal on Scroll)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 150;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // Management Formular
+        document.getElementById('salonForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            this.style.opacity = '0';
+            setTimeout(() => {
+                this.reset();
+                this.style.display = 'none';
+                document.getElementById('successMsg').style.display = 'block';
+            }, 1500);
+        });
+
+        // Schimbare fundal Nav la scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = '#ffffff';
+                nav.style.padding = '10px 8%';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.padding = '15px 8%';
+            }
+        });
+    </script>
+</body>
+</html>
